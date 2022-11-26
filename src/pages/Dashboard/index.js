@@ -29,6 +29,7 @@ export default function Dashboard() {
     useEffect(() => {
         
         return () => {
+            setLoading(true);
             async function loadChamados() {
                 await listRef.limit(5)
                 .get()
