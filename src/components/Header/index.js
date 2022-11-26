@@ -21,7 +21,7 @@ export default function Header() {
                 <img src={user.avatarUrl === null ? avatar : user.avatarUrl } alt="Foto avatar" />
             </div>
 
-            <Link to="/">
+            <Link to="/dashboard">
                 <FcHome color='#FFF' size={25} />
                 Dashboard
             </Link>

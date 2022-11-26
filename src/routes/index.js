@@ -5,9 +5,9 @@ import Route from './Route';
 import SignIn from '../pages/SingIn';
 import SignUp from '../pages/SignUp';
 
-import Dashboard from "../pages/Dashboard";
+import { Dashboard } from "../pages/Dashboard";
 
-import Profile from '../pages/Profile';
+import { Profile } from '../pages/Profile';
 import { Dividendos } from "../pages/Dividendos";
 import { Ativos } from "../pages/Ativos";
 import { Cep } from '../pages/Cep';

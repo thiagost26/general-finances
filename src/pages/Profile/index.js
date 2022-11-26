@@ -10,7 +10,7 @@ import { AuthContext } from '../../contexts/auth';
 
 import { FiSettings, FiUpload } from 'react-icons/fi';
 
-export default function Profile() {
+export const Profile = () => {
 
     const { user, signOut, setUser, storageUser } = useContext(AuthContext);
 

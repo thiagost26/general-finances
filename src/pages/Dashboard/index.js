@@ -5,7 +5,7 @@ import Header from "../../components/Header";
 import Title from '../../components/Title';
 
 import { FcMoneyTransfer, FcPlus, FcSearch, FcSupport } from "react-icons/fc"
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import Modal from '../../components/Modal';
 import { format } from 'date-fns';
 
@@ -14,7 +14,7 @@ import firebase from "../../services/firebaseConnection";
 const listRef = firebase.firestore().collection('dividendos').orderBy('created', 'asc');
 
 
-export default function Dashboard() {
+export const Dashboard = () => {
     const [dividendos, setDividendos] = useState([]);
     const [loading, setLoading] = useState(false);
     const [loadingMore, setLoadingMore] = useState(false);
@@ -27,27 +27,25 @@ export default function Dashboard() {
 
 
     useEffect(() => {
+        setLoading(true);
+            
         
-        return () => {
-            setLoading(true);
-            async function loadChamados() {
-                await listRef.limit(5)
-                .get()
-                .then((snapshot) => {
-                    updateState(snapshot)
-        
-                })
-                .catch((error) => {
-                    console.log('Deu algum erro: ', error);
-                    setLoadingMore(false);
-                })
-        
-                setLoading(false);
-            }
-
-            loadChamados();
+        async function loadChamados() {
+            await listRef.limit(5)
+            .get()
+            .then((snapshot) => {
+                updateState(snapshot)
+    
+            })
+            .catch((error) => {
+                console.log('Deu algum erro: ', error);
+                setLoadingMore(false);
+            })
+    
+            setLoading(false);
         }
 
+        loadChamados();
         
     }, []);
 
@@ -100,7 +98,7 @@ export default function Dashboard() {
     }
 
 
-    if(!loading) {
+    // if(!loading) {
         return(
             <div>
                 <Header />
@@ -138,5 +136,5 @@ export default function Dashboard() {
                 )}
             </div>
         )
-    }
+    // }
 }
