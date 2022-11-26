@@ -101,7 +101,7 @@ export default function Dashboard() {
 
     if(!loading) {
         return(
-            <>
+            <div>
                 <Header />
                 <div className="content">
                     <Title name="Dividendos lançados">
@@ -114,55 +114,19 @@ export default function Dashboard() {
                             Novo dividendo
                         </Link>
 
-                        <>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Ativo</th>
-                                        <th scope="col">Data Pag</th>
-                                        <th scope="col">Qtd</th>
-                                        <th scope="col">Dividendo</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Total</th>
-                                        <th scope="col">#</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {dividendos.map((item, index) => {
-                                        const qtdInt = parseFloat(item.qtd);
-                                        const valor = parseFloat(item.valor);
-                                        const total = (qtdInt * valor);
-                                        
-                                        const valorFormated = `$ ${valor.toFixed(2).replace('.',',')}`;
-                                        const totalFormated = `$ ${total.toFixed(2).replace('.',',')}`;
-                                        
-                                        return(
-                                            <tr key={index} >
-                                                <td data-label="Ativo">{item.ativo}</td>
-                                                <td data-label="Data">{item.dataPagamento}</td>
-                                                <td data-label="Qtd">{item.qtd}</td>
-                                                <td data-label="Dividendo">{valorFormated}</td>
-                                                <td data-label="Status">
-                                                    <span className="badge" style={{ backgroundColor: item.status === 'Aprovado' ? '#5cb85c' : '#999'}}>{item.status}</span>
-                                                </td>
-                                                <td data-label="Total">{totalFormated}</td>
-                                                <td>
-                                                    <button className="action" style={{backgroundColor: '#3583f6'}} onClick={() => togglePostModal(item)} >
-                                                        <FcSearch color='#FFF' size={17} />
-                                                    </button>
-                                                    <Link className="action" style={{backgroundColor: '#F6a935'}} >
-                                                        <FcSupport color='#FFF' size={17} />
-                                                    </Link>
-                                                </td>
-                                            </tr>  
-                                        )
-                                    })}                                   
-                                </tbody>
-                            </table>
+                            
+                            {dividendos.map((item, index) => {
+                                return(
+                                    <option key={item.id} value={index}>
+                                        {item.ativo}
+                                        {item.dataPagamento}
+                                        {item.qtd}
+                                        {item.valor}
+                                        {item.status}
+                                    </option>
+                                )
+                            })}
 
-                            {loadingMore && <h3 style={{textAlign: 'center', marginTop: 15}}>Buscando dados...</h3>}
-                            { !loadingMore && !isEmpty && <button className="btn-more" onClick={handleMore} >Buscar mais</button>}
-                        </>
                 </div>
 
                 {showPostModal && (
@@ -171,8 +135,7 @@ export default function Dashboard() {
                         close={togglePostModal}
                     />
                 )}
-
-            </>
+            </div>
         )
     }
 }
