@@ -46,6 +46,10 @@ export default function Header() {
                 Localidade
             </Link>
 
+            <Link to="/teste">                
+                Teste
+            </Link>
+
             <Link to="/profile">                
                 <FcSettings size={25} />
                 Configurações

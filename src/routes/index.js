@@ -12,6 +12,7 @@ import { Dividendos } from "../pages/Dividendos";
 import { Ativos } from "../pages/Ativos";
 import { Cep } from '../pages/Cep';
 import { Localidade } from '../pages/Localidade';
+import { Teste } from '../pages/Teste';
 
 
 export default function Routes() {
@@ -28,6 +29,7 @@ export default function Routes() {
             <Route exact path="/ativos" component={Ativos} isPrivate />
             <Route exact path="/cep" component={Cep} isPrivate />
             <Route exact path="/localidade" component={Localidade} isPrivate />
+            <Route exact path="/teste" component={Teste} isPrivate />
 
         </Switch>
 

@@ -13,7 +13,6 @@ export const Cep = () => {
     const {register, handleSubmit, setValue, setFocus} = useForm();
 
     const onSubmit = (e) => {
-        console.log(e)
         setValue('cep', '');
         setValue('rua', '');
         setValue('bairro', '');
@@ -24,10 +23,8 @@ export const Cep = () => {
 
     const checkCep = (e) => {
         const cep = e.target.value.replace(/\D/g, '');
-        console.log(cep);
         fetch(`https://viacep.com.br/ws/${cep}/json/`)
             .then(res => res.json()).then(data => {
-                console.log(data);
                 setValue('rua', data.logradouro);
                 setValue('bairro', data.bairro);
                 setValue('cidade', data.localidade);
